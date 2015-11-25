@@ -1,0 +1,65 @@
+<h1><%= specificClass.subject %> Period <%= specificClass.period %></h1>
+<h3><%= specificClass.numStudents %> students</h3>
+<% var students = [] %>
+<% for(var i=0; i<specificClass.students.length; i++) { %>
+    <% students.push({name: specificClass.students[i].name, id: specificClass.students[i]._id}) %>
+    <a href="/classes/<%= specificClass._id %>/students/<%= specificClass.students[i]._id %>">
+      <%= specificClass.students[i].name %></a>
+      <br>
+<% } %>
+<br>
+Add a student:
+<form action="/classes/<%= specificClass._id %>/students" method="post">
+  <label for="inputname">Name</label>
+  <input id="inputname" type="text" name="student[name]"/>
+
+  <label for="inputpassword">Email</label>
+  <input id="inputpassword" type="text" name="student[email]" />
+
+  <label for="behavior">Behavior</label>
+  <select id="behavior" name="student[behavior]">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+
+  <label for="aptitude">Aptitude</label>
+  <select id="aptitude" name="student[aptitude]">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+
+
+  <input class="loginsubmit submit" type="submit" class="btn btn-primary"/>
+</form>
+<br>
+<% if (flash.studentExists) { %>
+<p class = "errormessage"><%=flash.studentExists%></p>
+<%} %>
+<a href="/classes/<%=specificClass._id%>/edit">Edit</a>
+<br><br>
+
+<form action="/classes/<%= specificClass._id %>/group" method="post">
+  <label for="groupBy">Group By</label>
+  <select id="groupBy" name="group[type]">
+    <option value="Random">Random</option>
+    <option value="2">Other</option>
+  </select>
+
+  <label for="groupAmount">How Many/Group</label>
+  <input id="groupAmount" type="text" name="group[perGroup]" />
+
+  <input id="groupAmount" type="hidden" value="<%=specificClass.numStudents%>"name="group[total]" />
+  <input id="students" type="hidden" value="<%= JSON.stringify(students) %>"name="group[students]" />
+  <input class="loginsubmit submit" type="submit" class="btn btn-primary" value="Group"/>
+</form>
+<br><br>
+
+<%= JSON.stringify(students) %>
+
+<a href="/">Back</a>

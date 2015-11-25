@@ -1,0 +1,46 @@
+<br>
+  <form action="/classes/<%=specificClass._id%>/?_method=PATCH" method="POST">
+
+  <label for="inputname">Subject</label>
+  <input id="inputname" value="<%= specificClass.subject%>" type="text" name="class[subject]"/>
+
+  <label for="inputpassword">Period</label>
+  <input id="inputpassword" value="<%= specificClass.period%>" type="text" name="class[period]" />
+
+  <input class="loginsubmit submit" type="submit" class="btn btn-primary"/>
+</form>
+<form action="/classes/<%=specificClass._id%>/?_method=DELETE" method="POST">
+  <input class="loginsubmit submit" type="submit" class="btn btn-primary" value="Delete"/>
+</form>
+
+<br>
+<% for(var i=0; i<specificClass.students.length; i++) { %>
+      <%= specificClass.students[i].name %>:
+      <form action="/classes/<%=specificClass._id%>/students/<%=specificClass.students[i]._id%>/?_method=PATCH" method="POST">
+        <label for="behavior">Behavior</label>
+        <select id="behavior" name="student[behavior]">
+          <option value="1" <% if (specificClass.students[i].behavior[indices[i]] == '1') { %>selected<% } %> >1</option>
+          <option value="2" <% if (specificClass.students[i].behavior[indices[i]] == '2') { %>selected<% } %> >2</option>
+          <option value="3" <% if (specificClass.students[i].behavior[indices[i]] == '3') { %>selected<% } %> >3</option>
+          <option value="4" <% if (specificClass.students[i].behavior[indices[i]] == '4') { %>selected<% } %> >4</option>
+          <option value="5" <% if (specificClass.students[i].behavior[indices[i]] == '5') { %>selected<% } %> >5</option>
+        </select>
+
+        <label for="aptitude">Aptitude</label>
+        <select id="aptitude" name="student[aptitude]">
+          <option value="1" <% if (specificClass.students[i].aptitude[indices[i]] == '1') { %>selected<% } %> >1</option>
+          <option value="2" <% if (specificClass.students[i].aptitude[indices[i]] == '2') { %>selected<% } %> >2</option>
+          <option value="3" <% if (specificClass.students[i].aptitude[indices[i]] == '3') { %>selected<% } %> >3</option>
+          <option value="4" <% if (specificClass.students[i].aptitude[indices[i]] == '4') { %>selected<% } %> >4</option>
+          <option value="5" <% if (specificClass.students[i].aptitude[indices[i]] == '5') { %>selected<% } %> >5</option>
+        </select>
+        <input class="loginsubmit submit" type="submit" class="btn btn-primary" value="Edit"/>
+      </form>
+      <form action="/classes/<%=specificClass._id%>/students/<%=specificClass.students[i]._id%>/?_method=DELETE" method="POST">
+        <input class="loginsubmit submit" type="submit" class="btn btn-primary" value="Delete"/>
+      </form><br><br>
+      <br><br>
+<% } %>
+
+
+<a href="/classes/<%=specificClass._id%>">Back</a>

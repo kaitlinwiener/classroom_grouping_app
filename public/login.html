@@ -1,0 +1,60 @@
+<div>
+   <div class="login card">
+     <div class="card-content">
+       <h1>Login</h1>
+       <form action="/session" method="post">
+         <label for="inputname">Email</label>
+         <input id="inputname" type="text" name="user[email]"/>
+
+         <label for="inputpassword">Password</label>
+         <input id="inputpassword" type="password" name="user[password]" />
+       <br><br>
+         <input class="loginsubmit submit" type="submit" class="btn btn-primary"/>
+         <% if (flash.incorrectPassword) { %>
+         <p class = "errormessage"><%=flash.incorrectPassword%></p>
+         <%} %>
+         <% if (flash.userDoesntExist) { %>
+         <p class = "errormessage"><%=flash.userDoesntExist%></p>
+         <%} %>
+       </form>
+    </div>
+  </div>
+  <div class="signup card">
+    <div class="card-content">
+      <h1>Sign Up</h1>
+      <form action="/users/new" method="post">
+        <label for="inputname2">First Name</label>
+        <input id="inputname2" type="text" name="user[firstName]"/>
+
+        <label for="inputname2">Last Name</label>
+        <input id="inputname2" type="text" name="user[lastName]"/>
+
+        <label for="inputname">Email</label>
+        <input id="inputname" type="text" name="user[email]"/>
+
+        <label for="inputpassword2">Password</label>
+        <input type="password" name="user[password]" />
+
+        <label for="isTeacher">I am a: </label>
+        <select id="isTeacher" name="user[isTeacher]">
+          <option value="true">Teacher</option>
+          <option value="false">Student</option>
+        </select>
+      <br><br>
+        <input class="loginsubmit submit" type="submit" class="btn btn-primary"/>
+        <% if (flash.duplicateName) { %>
+        <p class = "errormessage"><%= flash.duplicateName %></p>
+        <%} %>
+        <% if (flash.needName) { %>
+        <p class = "errormessage"><%=flash.needName%></p>
+        <%} %>
+        <% if (flash.needEmail) { %>
+        <p class = "errormessage"><%= flash.needEmail %></p>
+        <%} %>
+        <% if (flash.needPassword) { %>
+        <p class = "errormessage"><%= flash.needPassword %></p>
+        <%} %>
+      </form>
+    </div>
+ </div>
+</div>
