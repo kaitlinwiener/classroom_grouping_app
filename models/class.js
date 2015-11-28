@@ -6,7 +6,8 @@ var classSchema = new Schema({
   subject:  { type: String, required: true},
   period: {type: Number, required: true},
   students: [{type: Schema.Types.ObjectId, ref: 'student', many: true}],
-  numStudents: {type: Number}
+  numStudents: {type: Number},
+  pictureUrl: {type: String}
 }, {collections: 'classes', strict: false});
 
 var Class = mongoose.model('class', classSchema);

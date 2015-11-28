@@ -1,0 +1,30 @@
+<h2 id="welcomeHeader"> Welcome <%= currentUser.firstName%> </h2>
+
+<div id="classList">
+  <% if (classes.length == 0) { %>
+    <h2>Let's add your schedule!</h2>
+  <% } else { %>
+      <ul>
+    <% for (var i=0; i<classes.length; i++) { %>
+      <li><a href="/classes/<%= classes[i]._id %>"><%= classes[i].subject %> Period <%= classes[i].period %></a></li>
+      <br>
+      <% } %>
+  <% } %>
+      <li id="modalId"><a class="modal-trigger" href="#modal1">Add a Class</a></li>
+    </ul>
+  <br><br>
+</div>
+
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <form id="addClass" action="/classes" method="post">
+      <label for="inputname">Subject</label>
+      <input id="inputname" type="text" name="class[subject]"/>
+
+      <label for="inputpassword">Period</label>
+      <input id="inputpassword" type="text" name="class[period]" />
+
+      <input class="loginsubmit submit modal-action modal-close" type="submit" class="btn btn-primary"/>
+    </form>
+  </div>
+</div>

@@ -25,6 +25,7 @@ router.post('/', function (req, res) {
             if (err) {
               console.log(err)
             } else {
+              // res.json(updatedUser)
               res.redirect(302, '/')
             }
           })
@@ -40,9 +41,13 @@ router.get('/:id', function (req, res) {
     if (err) {
       console.log(err)
     } else {
-      console.log(specificClass)
+      var indices = []
+      for (var i=0; i<specificClass.students.length; i++) {
+        indices.push(specificClass.students[i]._classes.indexOf(specificClass._id))
+      }
       res.render('class/show', {
-        specificClass: specificClass
+        specificClass: specificClass,
+        indices: indices
       });
     }
   })
@@ -54,7 +59,6 @@ router.get('/:id/edit', function (req, res) {
     if (err) {
       console.log(err)
     } else {
-      console.log(specificClass)
       var indices = []
       for (var i=0; i<specificClass.students.length; i++) {
         indices.push(specificClass.students[i]._classes.indexOf(specificClass._id))
@@ -142,7 +146,34 @@ router.delete('/:id', function (req, res) {
 });
 
 router.post('/:id/group', function (req, res) {
-  console.log("grouping")
+  Class.findById(req.params.id).populate('students').exec(function (err, results) {
+    var numStudents = results.numStudents;
+    var perGroup = Number(req.body.group.perGroup)
+    var numGroups = numStudents/perGroup
+
+    var currentIndex = results.students.length
+    var randomIndex
+    var temportaryValue
+
+    while (currentIndex > 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex)
+      currentIndex -=1
+
+      temporaryValue = results.students[currentIndex];
+      results.students[currentIndex] = results.students[randomIndex];
+      results.students[randomIndex] = temporaryValue;
+    }
+
+    res.render('class/group', {
+      students: results.students,
+      numGroups: Math.ceil(numGroups),
+      perGroup: perGroup
+    })
+
+
+  })
+
+
 })
 
 

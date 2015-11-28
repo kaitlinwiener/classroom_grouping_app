@@ -1,3 +1,233 @@
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+ body {
+
+ }
+
 .hidden {
   display: none;
+}
+
+h1 {
+ text-align: center;
+ margin-bottom: 0px;
+ margin-top: 10px;
+}
+
+#welcomeHeader {
+  margin-bottom: 50px;
+  margin-top: 30px;
+}
+
+h2, h3 {
+  text-align: center;
+  margin-bottom: 0px;
+  margin-top: 10px;
+}
+
+h5 {
+  text-align: center;
+}
+
+div {
+  width: 70%;
+  margin-left: 15%;
+}
+
+form {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 25px;
+}
+
+#addPicture {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+nav {
+  background-image: url("http://www.doubleedgefitness.com/wp-content/uploads/2015/09/Education_Chalkboard.jpg");
+}
+
+a {
+
+}
+
+ul {
+  margin-top: 30px;
+  text-align: center;
+  list-style: none;
+}
+
+li {
+  font-size: 20px;
+  margin-bottom: 0px;
+}
+
+#modalId {
+  margin-top: 20px;
+  border-top: 1px solid black;
+  padding-top: 10px;
+  width: 30%;
+  margin-left: 35%;
+}
+
+#modalId a {
+  color: black;
+}
+
+#addClass {
+  width: 40%;
+  margin-left: 30%;
+}
+
+#addClass input {
+  height: 1.5rem;
+}
+
+#studentList {
+  width: 80%;
+  height: 100px;
+}
+
+#studentPhoto {
+  margin-top: 10px;
+  height: 60px;
+}
+
+#logout {
+  height: 15px;
+  line-height: 12px;
+  font-size: 12px;
+  color: black;
+  background: none;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+#groupForm {
+  padding: 5px 5px;
+  width: 30%;
+  margin-left: 35%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid black;
+}
+
+#groupForm select {
+  width: 80%;
+  text-align: center;
+}
+
+#addStudentForm {
+  width: 80%;
+  border: 1px solid black;
+  padding: 10px 10px;
+  margin-left: 10%;
+  height: 500px;
+  margin-bottom: 20px;
+}
+
+#addStudentForm select, #selectForm input {
+  width: 50%;
+  height: 10vh;
+  margin: 0 auto;
+
+}
+
+.login, .signup {
+  width: 80%;
+  margin-top: 50px;
+  margin-left: 10%;
+}
+
+.groupView {
+  width: 90%;
+  margin-left: 5%;
+}
+
+.groupDiv {
+  height: 250px;
+  width: 50%;
+  border: 1px solid black;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 25%
+}
+
+.studentDiv {
+  height: 60px;
+  width: 60px;
+  margin: 0 auto;
+  border: 1px solid red;
+}
+
+#notamember:hover, #backtologin:hover {
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+
+#linkToEdit {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+#linkToGroup {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+.col {
+  width: 40%;
+  margin-left: 10%;
+  border: 1px solid black;
+}
+
+#logo {
+  margin-left: 10px;
+  font-family: 'Amatic SC', cursive;
+}
+
+#logopicture {
+  margin-left: 10px;
+  height: 60px;
+  width: 60px;
+  opacity: .3;
+}
+
+#editForm {
+  width: 50%;
+  margin-left: 25%;
+  border: 1px solid black;
+  padding: 10px 10px;
+}
+
+#delete {
+  margin-top: 0px;
+}
+
+.modal {
+  background-color: white;
+}
+
+.modal-backdrop {
+  color: blue;
+  position: fixed;
+}
+
+.submit {
+
+}
+
+.dz-default {
+  height: 60px;
+  border: 1px dashed black;
 }

@@ -6,8 +6,8 @@ MONGOURI = process.env.MONGOLAB_URI || "mongodb://localhost:27017",
 dbname = "classroom",
 morgan = require('morgan'),
 mongoose = require('mongoose'),
-// ejs = require ('ejs'),
-// layouts = require ('express-ejs-layouts'),
+ejs = require ('ejs'),
+layouts = require ('express-ejs-layouts'),
 session = require ('express-session'),
 methodOverride = require ('method-override'),
 bodyParser = require ('body-parser'),
@@ -16,9 +16,10 @@ SALT_WORK_FACTOR = 10;
 
 
 //APP STUFF
-// server.set('views', './views');
-// server.set('view engine', 'ejs');
+server.set('views', './views');
+server.set('view engine', 'ejs');
 server.use(morgan('dev'));
+// server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -29,7 +30,7 @@ server.use(session({
   saveUninitialized: true
 }));
 
-// server.use(layouts);
+server.use(layouts);
 
 server.use(function (req, res, next) {
   res.locals.flash  = req.session.flash || {};
@@ -61,77 +62,71 @@ var User = require('./models/user.js');
 var Class = require('./models/class.js');
 var Student = require('./models/student.js');
 
-// var loggedIn = function (req, res, next) {
-//   if (req.session.currentUser) {
-//     next();
-//   } else {
-//     res.redirect(302, "/login")
-//   }
-// }
-
 //Server specific controllers
-
-//if already logged in, redirect to main page
 server.get('/login', function (req, res) {
-  res.sendFile('login.html', {
-    root: __dirname + '/public'
-  });
-  // console.log(req.session.currentUser)
-  // if (req.session.currentUser) {
-  //   res.sendFile('index.html', {
-  //     root: __dirname + '/public/'
-  //   });
-  // } else {
-  //   res.sendFile('login.html', {
-  //     root: __dirname + '/public'
-  //   });
-  // }
+  if (!req.session.currentUser) {
+    res.render('login')
+    //if already logged in, redirect to main page
+  } else {
+    res.redirect(302, '/')
+  }
 })
 
 //view all classes
 // server.get('/', loggedIn, function (req, res) {
 server.get('/', function (req, res) {
-
-    // res.sendFile('index.html', {
-    //   root: __dirname + '/public'
-    // });
-  //if user is logged in, set the current user and render the homepage
-  if (req.session.currentUser) {
+  // if user is logged in, set the current user and render the homepage
+  if (!req.session.currentUser) {
+    res.redirect(302, '/login')
+  } else {
+    if (req.session.currentUser.isTeacher) {
     User.findOne({email: req.session.currentUser.email}).populate('classes')
-    .exec(function (err, results) {
+    .exec(function (err, result) {
       if (err) {
         console.log(err);
       } else {
-        // var orderedClasses = []
-        // if (results.classes.length > 0) {
-        //   orderedClasses[0] = results.classes[0]
-        //
-        //   for (var i=1; i<results.classes.length; i++) {
-        //     if (results.classes[i].period < orderedClasses[0].period) {
-        //       orderedClasses.unshift(results.classes[i])
-        //     } else if (results.classes[i].period > orderedClasses[orderedClasses.length-1].period) {
-        //       orderedClasses.push(results.classes[i])
-        //     } else {
-        //       var j = orderedClasses.length-1;
-        //       while (results.classes[i].period < orderedClasses[j].period) {
-        //         j--
-        //       }
-        //       orderedClasses.splice(j+1, 0, results.classes[i])
-        //       orderedClasses.join()
-        //     }
-        //   }
-        // }
-        res.sendFile('index.html', {
-          root: __dirname + '/public'
-        });
+        var orderedClasses = []
+        if (result.classes.length > 0) {
+            orderedClasses[0] = result.classes[0]
+
+            for (var i=1; i<result.classes.length; i++) {
+              if (result.classes[i].period < orderedClasses[0].period) {
+                orderedClasses.unshift(result.classes[i])
+              } else if (result.classes[i].period > orderedClasses[orderedClasses.length-1].period) {
+                orderedClasses.push(result.classes[i])
+              } else {
+                var j = orderedClasses.length-1;
+                while (result.classes[i].period < orderedClasses[j].period) {
+                  j--
+                }
+                orderedClasses.splice(j+1, 0, result.classes[i])
+                orderedClasses.join()
+            }
+          }
+        }
+            res.render('main', {
+            classes: orderedClasses
+          })
+        }
+      })
+      } else {
+        Student.findOne({email: req.session.currentUser.email}).populate('_classes')
+        .exec(function (err, result) {
+          if (!result.picture) {
+            var hasPicture = false;
+          }
+
+        res.render('student', {
+        classes: result._classes,
+        picture: hasPicture
+      })
+      })
+
       }
-    })
-  } else {
-      res.sendFile('login.html', {
-        root: __dirname + '/public'
-      });
-  }
-});
+    }
+  })
+// }
+// })
 
 //log in
 server.post('/session', function (req, res) {
@@ -155,7 +150,6 @@ server.post('/session', function (req, res) {
               if (err) {
                 console.log("err")
               } else {
-                req.session.numUsers = users.length
                 res.redirect(302, '/')
               }
             } )

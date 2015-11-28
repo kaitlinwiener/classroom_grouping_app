@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+    <title></title>
+  </head>
+  <body>
+    <nav>
+      <% if (currentUser) { %>
+      <form id="logout" class="brand-logo left" action="/session/?_method=DELETE" method="POST">
+          <input class="loginsubmit submit" type="submit" class="btn btn-primary" value="Log Out"/>
+        </form>
+      <%} %>
+          <h1 id="logo" class="brand-logo center">Groupify</h1>
+          <img id="logopicture" class="brand-logo center" src="http://www.soyouwanttoteach.com/icons/apple.png">
+    </nav>
+
+    <%- body %>
+
+    <script src="/scripts/dropzone.js"></script>
+    <script src="/scripts/app.js"></script>
+  </body>
+</html>

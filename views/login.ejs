@@ -1,7 +1,7 @@
 <div>
    <div class="login card">
      <div class="card-content">
-       <h1>Login</h1>
+       <h2>Login</h2>
        <form action="/session" method="post">
          <label for="inputname">Email</label>
          <input id="inputname" type="text" name="user[email]"/>
@@ -18,10 +18,11 @@
          <%} %>
        </form>
     </div>
+    <p id="notamember">Not a Member? Click Here!</p>
   </div>
-  <div class="signup card">
+  <div class="signup card hidden">
     <div class="card-content">
-      <h1>Sign Up</h1>
+      <h2>Sign Up</h2>
       <form action="/users/new" method="post">
         <label for="inputname2">First Name</label>
         <input id="inputname2" type="text" name="user[firstName]"/>
@@ -56,5 +57,6 @@
         <%} %>
       </form>
     </div>
+    <p id="backtologin">Back to Login</p>
  </div>
 </div>

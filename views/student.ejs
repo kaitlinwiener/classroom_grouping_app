@@ -1,0 +1,24 @@
+<% if (picture == false) { %>
+  <h2>Add a picture!</h2>
+
+  <form id="addPicture" action="" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+  </form>
+
+  <form action="/file-upload"
+      class="dropzone"
+      id="picture-dropzone"></form>
+<% } %>
+<div id="classList">
+  <% if (classes.length == 0) { %>
+    <h2>Nothing in your schedule yet!</h2>
+  <% } else { %>
+    <% for (var i=0; i<classes.length; i++) { %>
+      <ul>
+      <li><a href="/classes/<%= classes[i]._id %>"><%= classes[i].subject %> Period <%= classes[i].period %></a></li>
+      <br>
+      <% } %>
+      </ul>
+  <% } %>
+  <br><br>
+</div>

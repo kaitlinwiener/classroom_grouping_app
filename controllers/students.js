@@ -119,13 +119,15 @@ router.delete('/:studentid', function (req, res) {
       var index = specificStudent._classes.indexOf(classId)
 
       specificStudent._classes.splice(index, 1)
+      specificStudent.behavior.splice(index, 1)
+      specificStudent.aptitude.splice(index, 1)
 
       specificStudent.save(function (err, saved) {
         if (err) {
           console.log(err)
         } else {
           console.log(saved)
-          res.redirect(302, '/')
+          res.redirect(302, '/classes/' + classId)
         }
       })
     }

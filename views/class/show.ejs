@@ -1,65 +1,110 @@
-<h1><%= specificClass.subject %> Period <%= specificClass.period %></h1>
-<h3><%= specificClass.numStudents %> students</h3>
-<% var students = [] %>
-<% for(var i=0; i<specificClass.students.length; i++) { %>
-    <% students.push({name: specificClass.students[i].name, id: specificClass.students[i]._id}) %>
-    <a href="/classes/<%= specificClass._id %>/students/<%= specificClass.students[i]._id %>">
-      <%= specificClass.students[i].name %></a>
-      <br>
-<% } %>
+<a href="/">Back</a>
+
+<h3><%= specificClass.subject %> Period <%= specificClass.period %></h3>
+<h5><i><%= specificClass.numStudents %> students</i></h5>
+
+<a id="linkToGroup" href="#">Split into Groups</a>
+<a id="linkToEdit" class="modal-trigger" href="#modal2">Add a Student</a>
+<a id="linkToEdit" href="/classes/<%=specificClass._id%>/edit">Edit Class</a>
+
 <br>
-Add a student:
-<form action="/classes/<%= specificClass._id %>/students" method="post">
-  <label for="inputname">Name</label>
-  <input id="inputname" type="text" name="student[name]"/>
 
-  <label for="inputpassword">Email</label>
-  <input id="inputpassword" type="text" name="student[email]" />
-
-  <label for="behavior">Behavior</label>
-  <select id="behavior" name="student[behavior]">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-  </select>
-
-  <label for="aptitude">Aptitude</label>
-  <select id="aptitude" name="student[aptitude]">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-  </select>
-
-
-  <input class="loginsubmit submit" type="submit" class="btn btn-primary"/>
-</form>
-<br>
 <% if (flash.studentExists) { %>
 <p class = "errormessage"><%=flash.studentExists%></p>
 <%} %>
-<a href="/classes/<%=specificClass._id%>/edit">Edit</a>
-<br><br>
 
-<form action="/classes/<%= specificClass._id %>/group" method="post">
-  <label for="groupBy">Group By</label>
-  <select id="groupBy" name="group[type]">
-    <option value="Random">Random</option>
-    <option value="2">Other</option>
-  </select>
+<% if (specificClass.numStudents >0) { %>
+<form id="groupForm" class="hidden" action="/classes/<%= specificClass._id %>/group" method="post">
+  <div class="input-field">
+    <select id="groupBy" name="group[perGroup]">
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <label for="groupBy">Students per Group</label>
+  </div>
+  <div class="input-field">
+    <select id="groupBy" name="group[type]">
+      <option value="Random">Random</option>
+      <option value="2">Other</option>
+    </select>
+    <label for="groupAmount">Group Method</label>
+</div>
 
-  <label for="groupAmount">How Many/Group</label>
-  <input id="groupAmount" type="text" name="group[perGroup]" />
-
-  <input id="groupAmount" type="hidden" value="<%=specificClass.numStudents%>"name="group[total]" />
-  <input id="students" type="hidden" value="<%= JSON.stringify(students) %>"name="group[students]" />
   <input class="loginsubmit submit" type="submit" class="btn btn-primary" value="Group"/>
 </form>
+<% } %>
+
+<% for(var i=0; i<specificClass.students.length; i=i+2) { %>
+<div class="row">
+  <div class="col s6">
+    <div class="collection-item avatar">
+      <% if (specificClass.students[i].pictureUrl) { %>
+      <img id="studentPhoto" src="<%= specificClass.student[i].pictureUrl %>" alt="" class="circle">
+      <% } else { %>
+      <img id="studentPhoto" src="../images/noPicture.png" alt="" class="circle">
+      <% } %>
+      <span class="title"><%= specificClass.students[i].name %></span>
+      <p>Aptitude: <%= specificClass.students[i].aptitude[indices[i]] %><br>
+         Behavior: <%= specificClass.students[i].behavior[indices[i]] %>
+      </p>
+  </div>
+</div>
+
+  <% if (specificClass.students[i+1]) { %>
+    <div class="col s6">
+    <div class="collection-item avatar">
+      <% if (specificClass.students[i].pictureUrl) { %>
+      <img id="studentPhoto" src="<%= specificClass.student[i].pictureUrl %>" alt="" class="circle">
+      <% } else { %>
+      <img id="studentPhoto" src="../images/noPicture.png" alt="" class="circle">
+      <% } %>
+      <span class="title"><%= specificClass.students[i+1].name %></span>
+      <p>Aptitude: <%= specificClass.students[i+1].aptitude %><br>
+         Behavior: <%= specificClass.students[i+1].behavior %>
+      </p>
+    </div>
+    </div>
+  </div>
+  <% } %>
+<% } %>
 <br><br>
 
-<%= JSON.stringify(students) %>
+<div id="modal2" class="modal">
+  <form id="addStudentForm" action="/classes/<%= specificClass._id %>/students" method="post">
+    <h6>New Student</h6><br>
+    <label for="inputname">Name</label>
+    <input id="inputname" type="text" name="student[name]"/>
 
-<a href="/">Back</a>
+    <label for="inputpassword">Email</label>
+    <input id="inputpassword" type="text" name="student[email]" />
+
+    <label for="behavior">Behavior</label>
+    <select id="behavior" name="student[behavior]">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+
+    <label for="aptitude">Aptitude</label>
+    <select id="aptitude" name="student[aptitude]">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+
+
+    <input class="loginsubmit submit" type="submit" class="btn btn-primary"/>
+  </form>
+</div>
+<br>
