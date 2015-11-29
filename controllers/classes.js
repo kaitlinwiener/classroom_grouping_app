@@ -53,6 +53,25 @@ router.get('/:id', function (req, res) {
   })
 })
 
+//view class as student
+router.get('/:id/student', function (req, res) {
+  Class.findById(req.params.id).populate('students').exec(function (err, specificClass) {
+    if (err) {
+      console.log(err)
+    } else {
+      var indices = []
+      for (var i=0; i<specificClass.students.length; i++) {
+        indices.push(specificClass.students[i]._classes.indexOf(specificClass._id))
+      }
+      res.render('class/studentView', {
+        specificClass: specificClass,
+        indices: indices,
+        name: req.session.currentUser.firstName
+      });
+    }
+  })
+})
+
 //get edit form
 router.get('/:id/edit', function (req, res) {
   Class.findById(req.params.id).populate('students').exec(function (err, specificClass) {
@@ -145,6 +164,13 @@ router.delete('/:id', function (req, res) {
   })
 });
 
+router.post('/:id', function (req, res) {
+  console.log(req.body.students.groupList)
+  console.log('----------------------')
+  console.log(req.body.students.groupList[0])
+})
+
+
 router.post('/:id/group', function (req, res) {
   Class.findById(req.params.id).populate('students').exec(function (err, results) {
     var numStudents = results.numStudents;
@@ -165,6 +191,7 @@ router.post('/:id/group', function (req, res) {
     }
 
     res.render('class/group', {
+      specificClass: results,
       students: results.students,
       numGroups: Math.ceil(numGroups),
       perGroup: perGroup

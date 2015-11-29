@@ -38,4 +38,4 @@ $("#linkToGroup").click(function () {
   $("#groupForm").toggleClass("hidden")
 })
 
-$("#picture-dropzone").dropzone({ url: "/file" });
+$("#picture-dropzone").dropzone({ url: "/classes/:id" });

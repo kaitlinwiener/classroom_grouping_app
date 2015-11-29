@@ -18,6 +18,7 @@
     "method-override": "^2.3.5",
     "mongoose": "^4.2.6",
     "morgan": "^1.6.1",
+    "multer": "^1.1.0",
     "strict-mode": "^0.4.1"
   }
 }

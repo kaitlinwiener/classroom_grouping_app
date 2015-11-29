@@ -8,7 +8,6 @@
 <a id="linkToEdit" href="/classes/<%=specificClass._id%>/edit">Edit Class</a>
 
 <br>
-
 <% if (flash.studentExists) { %>
 <p class = "errormessage"><%=flash.studentExists%></p>
 <%} %>
@@ -66,8 +65,8 @@
       <img id="studentPhoto" src="../images/noPicture.png" alt="" class="circle">
       <% } %>
       <span class="title"><%= specificClass.students[i+1].name %></span>
-      <p>Aptitude: <%= specificClass.students[i+1].aptitude %><br>
-         Behavior: <%= specificClass.students[i+1].behavior %>
+      <p>Aptitude: <%= specificClass.students[i+1].aptitude[indices[i+1]] %><br>
+         Behavior: <%= specificClass.students[i+1].behavior[indices[i+1]] %>
       </p>
     </div>
     </div>

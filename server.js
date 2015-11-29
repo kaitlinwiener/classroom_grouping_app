@@ -19,7 +19,12 @@ SALT_WORK_FACTOR = 10;
 server.set('views', './views');
 server.set('view engine', 'ejs');
 server.use(morgan('dev'));
-// server.use(bodyParser.json());
+
+server.use(bodyParser({
+  keepExtensions: true,
+  uploadDir: '/my/files' }
+));
+
 server.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -42,6 +47,8 @@ server.use(function (req, res, next) {
   res.locals.currentUser = req.session.currentUser;
   next();
 });
+
+// server.use(multer);
 
 server.use(methodOverride('_method'));
 
@@ -115,18 +122,36 @@ server.get('/', function (req, res) {
           if (!result.picture) {
             var hasPicture = false;
           }
+          var orderedClasses = []
+          if (result._classes.length > 0) {
+              orderedClasses[0] = result._classes[0]
+
+              for (var i=1; i<result._classes.length; i++) {
+                if (result._classes[i].period < orderedClasses[0].period) {
+                  orderedClasses.unshift(result._classes[i])
+                } else if (result._classes[i].period > orderedClasses[orderedClasses.length-1].period) {
+                  orderedClasses.push(result._classes[i])
+                } else {
+                  var j = orderedClasses.length-1;
+                  while (result._classes[i].period < orderedClasses[j].period) {
+                    j--
+                  }
+                  orderedClasses.splice(j+1, 0, result._classes[i])
+                  orderedClasses.join()
+              }
+            }
+          }
 
         res.render('student', {
-        classes: result._classes,
-        picture: hasPicture
+        classes: orderedClasses,
+        picture: hasPicture,
       })
       })
 
       }
     }
   })
-// }
-// })
+
 
 //log in
 server.post('/session', function (req, res) {
@@ -159,6 +184,12 @@ server.post('/session', function (req, res) {
     }
   });
 });
+
+//upload student picture
+server.post('/users', function (req, res) {
+  console.log(req.files)
+
+})
 
 //log out
 server.delete('/session', function (req, res) {

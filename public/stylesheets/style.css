@@ -129,7 +129,7 @@ li {
   border: 1px solid black;
   padding: 10px 10px;
   margin-left: 10%;
-  height: 500px;
+  height: 400px;
   margin-bottom: 20px;
 }
 
@@ -161,8 +161,8 @@ li {
 }
 
 .studentDiv {
-  height: 60px;
-  width: 60px;
+  height: 70px;
+  width: 70px;
   margin: 0 auto;
   border: 1px solid red;
 }
@@ -183,6 +183,10 @@ li {
   text-align: center;
   margin: 0 auto;
   display: block;
+}
+
+#publishGroup {
+  margin-left: 30%;
 }
 
 .col {
