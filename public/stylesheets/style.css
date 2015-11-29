@@ -55,18 +55,22 @@ nav {
 }
 
 a {
-
+  font-size: 18px;
 }
 
 ul {
   margin-top: 30px;
   text-align: center;
-  list-style: none;
 }
 
 li {
   font-size: 20px;
   margin-bottom: 0px;
+  list-style-type: none;
+}
+
+small {
+  font-size: 18px;
 }
 
 #modalId {
