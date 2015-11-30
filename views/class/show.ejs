@@ -48,7 +48,7 @@
       <% if (specificClass.students[i].pictureUrl) { %>
       <img id="studentPhoto" src="<%= specificClass.student[i].pictureUrl %>" alt="" class="circle">
       <% } else { %>
-      <img id="studentPhoto" src="../images/noPicture.png" alt="" class="circle">
+      <img id="studentPhoto" src="../images/noAvatar.gif" alt="" class="circle">
       <% } %>
       <span class="title"><%= specificClass.students[i].name %></span>
       <p>Aptitude: <%= specificClass.students[i].aptitude[indices[i]] %><br>
@@ -63,7 +63,7 @@
       <% if (specificClass.students[i].pictureUrl) { %>
       <img id="studentPhoto" src="<%= specificClass.student[i].pictureUrl %>" alt="" class="circle">
       <% } else { %>
-      <img id="studentPhoto" src="../images/noPicture.png" alt="" class="circle">
+      <img id="studentPhoto" src="../images/noAvatar.gif" alt="" class="circle">
       <% } %>
       <span class="title"><%= specificClass.students[i+1].name %></span>
       <p>Aptitude: <%= specificClass.students[i+1].aptitude[indices[i+1]] %><br>
