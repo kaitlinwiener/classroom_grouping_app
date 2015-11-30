@@ -119,6 +119,14 @@ server.get('/', function (req, res) {
       } else {
         Student.findOne({email: req.session.currentUser.email}).populate('_classes')
         .exec(function (err, result) {
+          if (err) {
+            console.log(err)
+          } else {
+          if (result == null ) {
+            req.session.flash.notRegistered = "You are not yet registered by your teacher!"
+            req.session.currentUser = null;
+            res.redirect(302, '/login');
+          } else {
           if (!result.picture) {
             var hasPicture = false;
           }
@@ -143,9 +151,11 @@ server.get('/', function (req, res) {
           }
 
         res.render('student', {
-        classes: orderedClasses,
-        picture: hasPicture,
-      })
+          classes: orderedClasses,
+          picture: hasPicture,
+        })
+        }
+        }
       })
 
       }

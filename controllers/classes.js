@@ -190,12 +190,47 @@ router.post('/:id/group', function (req, res) {
       results.students[randomIndex] = temporaryValue;
     }
 
-    res.render('class/group', {
-      specificClass: results,
-      students: results.students,
-      numGroups: Math.ceil(numGroups),
-      perGroup: perGroup
+    var studentNames = []
+    for (var i=0; i<results.students.length; i++) {
+      studentNames.push(results.students[i].name)
+    }
+
+    var group = []
+    for (var i=0; i<numGroups; i++) {
+      group.push(studentNames.splice(0, perGroup))
+    }
+
+    Class.findById(req.params.id, function (err, specificClass) {
+      if (err) {
+        console.log(err)
+      } else {
+        specificClass.group = group
+
+        specificClass.save(function (err, savedClass) {
+          if (err) {
+            console.log(err)
+          } else {
+            console.log(savedClass)
+            res.render('class/group', {
+              specificClass: results,
+              students: results.students,
+              numGroups: Math.ceil(numGroups),
+              perGroup: perGroup,
+              groups: group
+            })
+          }
+        })
+      }
     })
+
+
+    // res.render('class/group', {
+    //   specificClass: results,
+    //   students: results.students,
+    //   numGroups: Math.ceil(numGroups),
+    //   perGroup: perGroup,
+    //   groups: group
+    // })
 
 
   })

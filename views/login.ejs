@@ -16,6 +16,9 @@
          <% if (flash.userDoesntExist) { %>
          <p class = "errormessage"><%=flash.userDoesntExist%></p>
          <%} %>
+         <% if (flash.notRegistered) { %>
+         <p class = "errormessage"><%=flash.notRegistered%></p>
+         <%} %>
        </form>
     </div>
     <p id="notamember">Not a Member? Click Here!</p>

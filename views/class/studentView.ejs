@@ -1,8 +1,14 @@
 <a href="/">Back</a>
+<% if (specificClass.group.length == 0) { %>
+  <h3>No Group Work Today</h3>
+<% } %>
 
 <br>
 <div id="studentClassList">
-<% for (var i=0; i<specificClass.students.length; i++) { %>
-  <h3><%= specificClass.students[i].name %></h3>
-  <% } %>
+<% for (var i=0; i<specificClass.group.length; i++) { %>
+      <h3>Group <%= i +1 %></h3>
+      <h3><%= specificClass.group[i] %></h3>
+
+  <br>
+<% } %>
 </div>

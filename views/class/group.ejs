@@ -1,3 +1,5 @@
+<a class="button" href="/classes/<%= specificClass._id %>">Publish to Class</a>
+
 <div class="groupView">
   <% var groupList = []%>
   <% for (var i=1; i<=numGroups; i=i+2) { %>
@@ -26,7 +28,7 @@
   <% } %>
 <div>
 
-  <form id="publishGroup" action="/classes/<%= specificClass._id %>" method="post">
+  <!-- <form id="publishGroup" action="/classes/<%= specificClass._id %>" method="post">
     <input class="hidden" name="students[groupList]" value="<%=groupList%>"/>
     <input class="loginsubmit submit" type="submit" class="btn btn-primary" value="Publish to Class"/>
-  </form>
+  </form> -->
