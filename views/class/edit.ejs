@@ -1,5 +1,5 @@
 
-<div id="editForm">
+<div id="editClassForm">
   <a id="back" href="/classes/<%=specificClass._id%>">Back</a>
   <img id="pushpin" src="/images/push-pin.jpg"/>
   <form action="/classes/<%=specificClass._id%>/?_method=PATCH" method="POST">
@@ -15,10 +15,10 @@
 <form id="delete" action="/classes/<%=specificClass._id%>/?_method=DELETE" method="POST">
   <input class="loginsubmit submit" type="submit" class="btn btn-primary" value="Delete Class from Schedule"/>
 </form>
-
+</div>
 <br>
 <% for(var i=0; i<specificClass.students.length; i++) { %>
-    <div id="editForm">
+    <div id="editStudentForm">
       <img id="bluepushpin" src="/images/blue-push-pin.png"/>
       <form action="/classes/<%=specificClass._id%>/students/<%=specificClass.students[i]._id%>/?_method=PATCH" method="POST">
         <p><%= specificClass.students[i].name %></p></br>
@@ -51,4 +51,3 @@
     </div>
       <br><br>
 <% } %>
-</div>

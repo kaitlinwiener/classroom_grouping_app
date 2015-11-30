@@ -6,25 +6,36 @@
    background-image: url("/images/corkboard.jpg");
  }
 
- .button {
-   display: block;
-   text-align: center;
-   margin-top: 20px;
+ nav {
+   background-image: url("/images/chalkboard.png");
+   border: 1px solid white;
  }
 
-.hidden {
-  display: none;
-}
+ footer {
+   background-image: url("/images/chalkboard.png");
+   position: fixed;
+   bottom: 0;
+   height: 30px;
+   width: 100%;
+   border-top: 1px solid white;
+   font-family: 'Amatic SC', cursive;
+ }
+
+ footer p {
+   text-align: center;
+   font-size: 12px;
+   color: white;
+   margin-top: 5px;
+ }
+
+ p {
+   text-align: center;
+ }
 
 h1 {
  text-align: center;
  margin-bottom: 0px;
  margin-top: 10px;
-}
-
-#welcomeHeader {
-  margin-bottom: 50px;
-  margin-top: 30px;
 }
 
 h2, h3 {
@@ -50,19 +61,6 @@ form {
 
 img {
   overflow: hidden;
-}
-
-#addPicture {
-  text-align: center;
-}
-
-p {
-  text-align: center;
-}
-
-nav {
-  background-image: url("/images/chalkboard.png");
-  border: 1px solid white;
 }
 
 a {
@@ -230,13 +228,23 @@ form p {
   opacity: .5;
 }
 
-#editForm {
+#editClassForm {
   width: 70%;
   margin-left: 15%;
   border: 1px solid black;
   padding: 10px 10px;
   background-color: white;
   margin-top: 50px;
+  box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
+}
+
+#editStudentForm {
+  background-color: #FFFF99;
+  width: 50%;
+  margin-left: 25%;
+  border: 1px solid black;
+  padding: 10px 10px;
+  box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
 }
 
 #delete {
@@ -293,11 +301,12 @@ form p {
 
 #classPage {
   background-color: white;
-  width: 70%;
-  margin-left: 15%;
+  width: 50%;
+  margin-left: 25%;
   margin-top: 50px;
   margin-bottom: 20px;
   color: black;
+  padding-bottom: 10px;
   box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
 }
 
@@ -313,4 +322,31 @@ form p {
 
 #draggable >p {
   color: black;
+}
+
+#studentProfile {
+  background-color: #FFFF99;
+  box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
+}
+
+.odd {
+  -o-transform:rotate(-2deg);
+  -webkit-transform:rotate(-2deg);
+  -moz-transform:rotate(-2deg);
+}
+
+.even {
+  -o-transform:rotate(2deg);
+  -webkit-transform:rotate(2deg);
+  -moz-transform:rotate(2deg);
+}
+
+.button {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.hidden {
+ display: none;
 }
