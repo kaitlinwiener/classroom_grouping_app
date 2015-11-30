@@ -1,5 +1,6 @@
-<a href="/">Back</a>
-
+<div id="classPage">
+<a id="back" href="/">Back</a>
+<img id="pushpin" src="/images/push-pin.jpg"/>
 <h3><%= specificClass.subject %> Period <%= specificClass.period %><small><i>   (<%= specificClass.numStudents %> students)</i></small></h3>
 
 <a id="linkToGroup" href="#">Split into Groups</a>
@@ -30,7 +31,7 @@
   <div class="input-field">
     <select id="groupBy" name="group[type]">
       <option value="Random">Random</option>
-      <option value="2">Other</option>
+      <option value="2">Aptitude</option>
     </select>
     <label for="groupAmount">Group Method</label>
 </div>
@@ -38,6 +39,7 @@
   <input class="loginsubmit submit" type="submit" class="btn btn-primary" value="Group"/>
 </form>
 <% } %>
+
 
 <% for(var i=0; i<specificClass.students.length; i=i+2) { %>
 <div class="row">
@@ -72,6 +74,7 @@
   </div>
   <% } %>
 <% } %>
+</div>
 <br><br>
 
 <div id="modal2" class="modal">

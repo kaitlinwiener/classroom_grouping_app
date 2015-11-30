@@ -1,34 +1,25 @@
+<div id="groupView">
+<a id="back" href="/classes/<%= specificClass._id %>">Back</a>
+<img id="pushpin" src="/images/push-pin.jpg"/>
 <a class="button" href="/classes/<%= specificClass._id %>">Publish to Class</a>
-
-<div class="groupView">
-  <% var groupList = []%>
-  <% for (var i=1; i<=numGroups; i=i+2) { %>
+  <% for (var i=0; i<groups.length; i=i+2) { %>
       <div class="groupDiv" style="top: 10px;" id="box"+i>
-        <h6 style="margin-left:10px">Group <%= i %></h6>
-        <% var studentDiv = students.splice(0, perGroup) %>
-        <% groupList.push(studentDiv) %>
-        <% for (var j=0; j<studentDiv.length; j++) { %>
+        <h6 style="margin-left:10px">Group <%= i + 1 %></h6>
+        <% for (var j=0; j<groups[i].length; j++) { %>
           <div id="draggable" class="ui-draggable studentDiv">
-            <p><%= studentDiv[j].name %></p>
+            <p><%= groups[i][j] %></p>
           </div>
           <% } %>
       </div>
     <% if (i + 1) { %>
       <div style="top: 400px;" class="groupDiv" id="box"+i>
-      <h6 style="margin-left:10px">Group <%= i+1 %></h6>
-        <% var studentDiv = students.splice(0, perGroup) %>
-          <% groupList.push(studentDiv) %>
-        <% for (var j=0; j<studentDiv.length; j++) { %>
+      <h6 style="margin-left:10px">Group <%= i+2 %></h6>
+        <% for (var j=0; j<groups[i+1].length; j++) { %>
           <div id="draggable" class="ui-draggable studentDiv">
-            <p><%= studentDiv[j].name %></p>
+            <p><%= groups[i+1][j] %></p>
           </div>
           <% } %>
       </div>
     <% } %>
   <% } %>
-<div>
-
-  <!-- <form id="publishGroup" action="/classes/<%= specificClass._id %>" method="post">
-    <input class="hidden" name="students[groupList]" value="<%=groupList%>"/>
-    <input class="loginsubmit submit" type="submit" class="btn btn-primary" value="Publish to Class"/>
-  </form> -->
+</div>

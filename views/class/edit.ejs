@@ -1,5 +1,7 @@
-<a href="/classes/<%=specificClass._id%>">Back</a>
-<br>
+
+<div id="editForm">
+  <a id="back" href="/classes/<%=specificClass._id%>">Back</a>
+  <img id="pushpin" src="/images/push-pin.jpg"/>
   <form action="/classes/<%=specificClass._id%>/?_method=PATCH" method="POST">
 
   <label for="inputname">Subject</label>
@@ -17,6 +19,7 @@
 <br>
 <% for(var i=0; i<specificClass.students.length; i++) { %>
     <div id="editForm">
+      <img id="bluepushpin" src="/images/blue-push-pin.png"/>
       <form action="/classes/<%=specificClass._id%>/students/<%=specificClass.students[i]._id%>/?_method=PATCH" method="POST">
         <p><%= specificClass.students[i].name %></p></br>
         <div class="input-field">
@@ -48,3 +51,4 @@
     </div>
       <br><br>
 <% } %>
+</div>

@@ -1,9 +1,9 @@
 //Classes controller
 var express = require ('express'),
-    router = express.Router(),
-    Class = require('../models/class.js'),
-    User = require('../models/user.js'),
-    Student = require('../models/student.js');
+router = express.Router(),
+Class = require('../models/class.js'),
+User = require('../models/user.js'),
+Student = require('../models/student.js');
 
 //create new class
 router.post('/', function (req, res) {
@@ -176,62 +176,84 @@ router.post('/:id/group', function (req, res) {
     var numStudents = results.numStudents;
     var perGroup = Number(req.body.group.perGroup)
     var numGroups = numStudents/perGroup
-
-    var currentIndex = results.students.length
-    var randomIndex
-    var temportaryValue
-
-    while (currentIndex > 0) {
-      randomIndex = Math.floor(Math.random() * currentIndex)
-      currentIndex -=1
-
-      temporaryValue = results.students[currentIndex];
-      results.students[currentIndex] = results.students[randomIndex];
-      results.students[randomIndex] = temporaryValue;
-    }
-
-    var studentNames = []
-    for (var i=0; i<results.students.length; i++) {
-      studentNames.push(results.students[i].name)
-    }
-
     var group = []
-    for (var i=0; i<numGroups; i++) {
-      group.push(studentNames.splice(0, perGroup))
-    }
 
-    Class.findById(req.params.id, function (err, specificClass) {
-      if (err) {
-        console.log(err)
-      } else {
-        specificClass.group = group
+    if (req.body.group.type == "Random") {
+      var currentIndex = results.students.length
+      var randomIndex
+      var temportaryValue
 
-        specificClass.save(function (err, savedClass) {
-          if (err) {
-            console.log(err)
-          } else {
-            console.log(savedClass)
-            res.render('class/group', {
-              specificClass: results,
-              students: results.students,
-              numGroups: Math.ceil(numGroups),
-              perGroup: perGroup,
-              groups: group
-            })
-          }
-        })
+      while (currentIndex > 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex)
+        currentIndex -=1
+
+        temporaryValue = results.students[currentIndex];
+        results.students[currentIndex] = results.students[randomIndex];
+        results.students[randomIndex] = temporaryValue;
       }
-    })
 
+      var studentNames = []
+      for (var i=0; i<results.students.length; i++) {
+        studentNames.push(results.students[i].name)
+      }
 
-    // res.render('class/group', {
-    //   specificClass: results,
-    //   students: results.students,
-    //   numGroups: Math.ceil(numGroups),
-    //   perGroup: perGroup,
-    //   groups: group
-    // })
+      for (var i=0; i<numGroups; i++) {
+        group.push(studentNames.splice(0, perGroup))
+      }
 
+      Class.findById(req.params.id, function (err, specificClass) {
+        if (err) {
+          console.log(err)
+        } else {
+          specificClass.group = group
+
+          specificClass.save(function (err, savedClass) {
+            if (err) {
+              console.log(err)
+            } else {
+              console.log(savedClass)
+              res.render('class/group', {
+                specificClass: results,
+                students: results.students,
+                numGroups: Math.ceil(numGroups),
+                perGroup: perGroup,
+                groups: group
+              })
+            }
+          })
+        }
+      })
+
+    } else {
+      var aptitudeList = []
+      var indices = []
+      for (var i=0; i<results.students.length; i++) {
+        indices.push(results.students[i]._classes.indexOf(results._id))
+      }
+      for (var i=0; i<results.students.length; i++) {
+        aptitudeList.push({name: results.students[i].name, aptitude: results.students[i].aptitude[indices[i]]})
+      }
+
+      aptitudeList.sort(function (a, b) {
+        if (a.aptitude > b.aptitude) {
+          return 1;
+        }
+        if (a.aptitude < b.aptitude) {
+          return -1;
+        }
+
+        return 0;
+      });
+
+      for (var i=0; i<numGroups; i++) {
+        group.push(aptitudeList.splice(0, perGroup))
+      }
+
+      res.render('class/group', {
+        specificClass: results,
+        groups: group
+      })
+    }
 
   })
 
