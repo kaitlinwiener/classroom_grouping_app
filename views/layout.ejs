@@ -17,24 +17,27 @@
     <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
     <title></title>
   </head>
-  <body>
     <nav>
       <% if (currentUser) { %>
-      <form id="logout" class="brand-logo left" action="/session/?_method=DELETE" method="POST">
-          <input class="loginsubmit submit" type="submit" class="btn btn-primary" value="Log Out"/>
+      <form id="logout" class="brand-logo right" action="/session/?_method=DELETE" method="POST">
+          <input id="logoutButton" class="loginsubmit submit" type="submit" class="btn btn-primary" value="Log Out"/>
         </form>
       <%} %>
-          <h1 id="logo" class="brand-logo center">Groupify</h1>
-          <img id="logopicture" class="brand-logo center" src="/images/apple.png">
+        <div class="brand-logo left">
+          <img id="logopicture" src="/images/apple.png">
+            <h1 id="logo">Groupify</h1>
+        </div>
     </nav>
-
-    <%- body %>
+    <body>
+      <%- body %>
+    </body>
 
     <footer>
-      <p>Kaitlin Wiener</p>
+      <a href="https://github.com/kaitlinwiener/classroom_grouping_app">
+          <img src="/images/Github-Mark-Light-32px.png"/></a>
+          <a href="#">Kaitlin Wiener</a><!-- TODO: put in link to personal site -->
     </footer>
 
     <script src="/scripts/dropzone.js"></script>
     <script src="/scripts/app.js"></script>
-  </body>
 </html>

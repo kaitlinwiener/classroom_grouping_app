@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)http://localhost:5555/classes/565b8f77b6cae01f2208ce24 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./565b8f77b6cae01f2208ce24_files/jquery.min.js"></script>
+    <script src="./565b8f77b6cae01f2208ce24_files/angular.min.js"></script>
+    <script src="./565b8f77b6cae01f2208ce24_files/angular-route.min.js"></script>
+    <link rel="stylesheet" href="./565b8f77b6cae01f2208ce24_files/materialize.min.css">
+    <script src="./565b8f77b6cae01f2208ce24_files/materialize.min.js"></script>
+    <link href="./565b8f77b6cae01f2208ce24_files/icon" rel="stylesheet">
+    <link rel="stylesheet" href="./565b8f77b6cae01f2208ce24_files/jquery-ui.css">
+    <script src="./565b8f77b6cae01f2208ce24_files/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="./565b8f77b6cae01f2208ce24_files/style.css">
+    <link href="./565b8f77b6cae01f2208ce24_files/css" rel="stylesheet" type="text/css">
+    <link href="./565b8f77b6cae01f2208ce24_files/css(1)" rel="stylesheet" type="text/css">
+    <title></title>
+  </head>
+    <body data-pinterest-extension-installed="cr1.39.1"><nav>
+      
+      <form id="logout" class="brand-logo left" action="http://localhost:5555/session/?_method=DELETE" method="POST">
+          <input class="loginsubmit submit" type="submit" value="Log Out">
+        </form>
+      
+        <div class="brand-logo center" style="
+    height: 64px;
+">
+          <img id="logopicture" src="./565b8f77b6cae01f2208ce24_files/apple.png">
+          <h1 id="logo">Groupify</h1>
+        </div>
+    </nav>
+    
+      <div id="classPage">
+  <a id="back" href="http://localhost:5555/">Back</a>
+  <img id="pushpin" src="./565b8f77b6cae01f2208ce24_files/push-pin.jpg">
+  <h3>History Period 2<small><i>   (4 students)</i></small></h3>
+
+  <a id="linkToGroup" href="http://localhost:5555/classes/565b8f77b6cae01f2208ce24#">Split into Groups</a>
+  <a id="linkToEdit" class="modal-trigger" href="http://localhost:5555/classes/565b8f77b6cae01f2208ce24#modal2">Add a Student</a>
+  <a id="linkToEdit" href="http://localhost:5555/classes/565b8f77b6cae01f2208ce24/edit">Edit Class</a>
+
+  <br>
+  
+
+    
+      <form id="groupForm" class="hidden" action="http://localhost:5555/classes/565b8f77b6cae01f2208ce24/group" method="post">
+        <div class="input-field">
+          <div class="select-wrapper"><span class="caret">▼</span><input type="text" class="select-dropdown" readonly="true" data-activates="select-options-e1a3aab7-a2b5-96bd-9ff9-fc76eab6e3a8" value="2"><ul id="select-options-e1a3aab7-a2b5-96bd-9ff9-fc76eab6e3a8" class="dropdown-content select-dropdown"><li class=""><span>2</span></li><li class=""><span>3</span></li><li class=""><span>4</span></li><li class=""><span>5</span></li><li class=""><span>6</span></li><li class=""><span>7</span></li><li class=""><span>8</span></li><li class=""><span>9</span></li><li class=""><span>10</span></li></ul><select id="groupBy" name="group[perGroup]" class="initialized">
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select></div>
+          <label for="groupBy">Students per Group</label>
+        </div>
+        <div class="input-field">
+          <div class="select-wrapper"><span class="caret">▼</span><input type="text" class="select-dropdown" readonly="true" data-activates="select-options-02c279fe-dfe6-3a63-6623-851a69453e44" value="Random"><ul id="select-options-02c279fe-dfe6-3a63-6623-851a69453e44" class="dropdown-content select-dropdown"><li class=""><span>Random</span></li><li class=""><span>Aptitude</span></li></ul><select id="groupBy" name="group[type]" class="initialized">
+            <option value="Random">Random</option>
+            <option value="2">Aptitude</option>
+          </select></div>
+          <label for="groupAmount">Group Method</label>
+        </div>
+
+        <input class="loginsubmit submit" type="submit" value="Group">
+      </form>
+      
+    </div>
+
+    
+      <div class="row">
+        <div id="studentProfile" class="col s5 offset-s1 odd">
+          <img id="bluepushpin" src="./565b8f77b6cae01f2208ce24_files/blue-push-pin.png">
+          <div class="collection-item avatar">
+            
+                <img id="studentPhoto" src="./565b8f77b6cae01f2208ce24_files/noAvatar.gif" alt="" class="circle">
+                
+                <span class="title">John Smith</span>
+                <p>Aptitude: 3<br>
+                  Behavior: 2
+                </p>
+              </div>
+            </div>
+
+            
+              <div id="studentProfile" class="col s5 offset-s1 even">
+                <img id="bluepushpin" src="./565b8f77b6cae01f2208ce24_files/blue-push-pin.png">
+                <div class="collection-item avatar">
+                  
+                      <img id="studentPhoto" src="./565b8f77b6cae01f2208ce24_files/noAvatar.gif" alt="" class="circle">
+                      
+                      <span class="title">Aleks</span>
+                      <p>Aptitude: 4<br>
+                        Behavior: 3
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                
+      <div class="row">
+        <div id="studentProfile" class="col s5 offset-s1 odd">
+          <img id="bluepushpin" src="./565b8f77b6cae01f2208ce24_files/blue-push-pin.png">
+          <div class="collection-item avatar">
+            
+                <img id="studentPhoto" src="./565b8f77b6cae01f2208ce24_files/noAvatar.gif" alt="" class="circle">
+                
+                <span class="title">Sally Smith</span>
+                <p>Aptitude: 1<br>
+                  Behavior: 3
+                </p>
+              </div>
+            </div>
+
+            
+              <div id="studentProfile" class="col s5 offset-s1 even">
+                <img id="bluepushpin" src="./565b8f77b6cae01f2208ce24_files/blue-push-pin.png">
+                <div class="collection-item avatar">
+                  
+                      <img id="studentPhoto" src="./565b8f77b6cae01f2208ce24_files/noAvatar.gif" alt="" class="circle">
+                      
+                      <span class="title">TEST</span>
+                      <p>Aptitude: 1<br>
+                        Behavior: 2
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                
+                <br><br>
+
+                <div id="modal2" class="modal">
+                  <form id="addStudentForm" action="http://localhost:5555/classes/565b8f77b6cae01f2208ce24/students" method="post">
+                    <h6>New Student</h6><br>
+                    <label for="inputname">Name</label>
+                    <input id="inputname" type="text" name="student[name]">
+
+                    <label for="inputpassword">Email</label>
+                    <input id="inputpassword" type="text" name="student[email]">
+
+                    <label for="behavior">Behavior</label>
+                    <div class="select-wrapper"><span class="caret">▼</span><input type="text" class="select-dropdown" readonly="true" data-activates="select-options-762e6ce5-88e9-a813-8fd4-f355f4176ed3" value="1"><ul id="select-options-762e6ce5-88e9-a813-8fd4-f355f4176ed3" class="dropdown-content select-dropdown"><li class=""><span>1</span></li><li class=""><span>2</span></li><li class=""><span>3</span></li><li class=""><span>4</span></li><li class=""><span>5</span></li></ul><select id="behavior" name="student[behavior]" class="initialized">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select></div>
+
+                    <label for="aptitude">Aptitude</label>
+                    <div class="select-wrapper"><span class="caret">▼</span><input type="text" class="select-dropdown" readonly="true" data-activates="select-options-93d1c84b-bae4-dd12-1d26-27263e592b03" value="1"><ul id="select-options-93d1c84b-bae4-dd12-1d26-27263e592b03" class="dropdown-content select-dropdown"><li class=""><span>1</span></li><li class=""><span>2</span></li><li class=""><span>3</span></li><li class=""><span>4</span></li><li class=""><span>5</span></li></ul><select id="aptitude" name="student[aptitude]" class="initialized">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select></div>
+
+
+                    <input class="loginsubmit submit" type="submit">
+                  </form>
+                </div>
+    
+
+    
+
+    <footer>
+      <a href="https://github.com/kaitlinwiener/classroom_grouping_app">
+          <img src="./565b8f77b6cae01f2208ce24_files/Github-Mark-Light-32px.png"></a>
+          <a href="http://localhost:5555/classes/565b8f77b6cae01f2208ce24#">Kaitlin Wiener</a><!-- TODO: put in link to personal site -->
+    </footer>
+
+    <script src="./565b8f77b6cae01f2208ce24_files/dropzone.js"></script>
+    <script src="./565b8f77b6cae01f2208ce24_files/app.js"></script>
+
+<div class="hiddendiv common"></div><span style="height: 20px; width: 40px; position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer; border: none; background-image: url(data:image/png;base64,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); background-color: transparent; background-size: 40px 20px;"></span></body></html>

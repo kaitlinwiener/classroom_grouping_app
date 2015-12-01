@@ -9,8 +9,6 @@
  nav {
    background-image: url("/images/chalkboard.png");
    border-bottom: 1px solid white;
-   height: 60px;
-   margin-bottom: 15px;
  }
 
  footer {
@@ -18,7 +16,7 @@
    height: 40px;
    width: 100%;
    border-top: 1px solid white;
-   margin-top: 250px;
+   margin-top: 200px;
    position: absolute;
  }
 
@@ -132,27 +130,9 @@ form p {
   line-height: 12px;
   font-size: 12px;
   color: black;
+  background: none;
   margin-top: 20px;
-  margin-right: 10px;
-  text-align: right;
-}
-
-#back {
-  border: 1px solid white;
-  color: white;
-  font-family: 'Amatic SC', cursive;
-  font-size: 20px;
   margin-left: 10px;
-  padding: 3px 3px;
-  background-image: url("/images/chalkboard.png");
-}
-
-#logoutButton {
-  background-image: url("/images/chalkboard.png");
-  border: 1px solid red;
-  color: white;
-  font-family: 'Amatic SC', cursive;
-  font-size: 18px;
 }
 
 #groupForm {
@@ -246,8 +226,7 @@ form p {
   font-family: 'Amatic SC', cursive;
   font-size: 46px;
   margin-left: -20px;
-  line-height: 64px;
-  vertical-align: top;
+  line-height: 60px;
 }
 
 #logopicture {
@@ -265,11 +244,7 @@ form p {
   padding: 10px 10px;
   background-color: white;
   margin-top: 50px;
-  margin-bottom: 20px;
   box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
-  -o-transform:rotate(-2deg);
-  -webkit-transform:rotate(-2deg);
-  -moz-transform:rotate(-2deg);
 }
 
 #editStudentForm {
@@ -300,7 +275,6 @@ form p {
 
 
 #pushpin {
-  display: inline;
   margin: 0 auto;
   text-align: center;
   margin-left: 50%;
@@ -315,7 +289,6 @@ form p {
   text-align: center;
   margin-left: 50%;
   width: 30px;
-  margin-top: 5px;
 }
 
 #classList {
@@ -323,19 +296,26 @@ form p {
   width: 40%;
   margin-left: 30%;
   padding-top: 10px;
-  margin-top: 100px;
+  margin-top: 50px;
   box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
-  padding-bottom: 60px;
 }
 
-#classDisplay {
+#back {
+  color: black;
+  background-color: white;
+  margin-left: 20px;
+  font-size: 16px;
+  margin-left: 3px;
+}
+
+#classPage {
   background-color: white;
   width: 50%;
   margin-left: 25%;
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   color: black;
-  padding: 10px;
+  padding-bottom: 10px;
   box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
 }
 
@@ -349,34 +329,22 @@ form p {
   padding: 10px 10px;
 }
 
-#studentGroup {
-  background-color: #CBFAFA;
-  width: 50%;
-  margin-left: 25%;
-  margin-top: 10px;
-  margin-bottom: 30px;
-  padding-bottom: 30px;
-  box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
-}
-
 #draggable >p {
   color: black;
 }
 
 #studentProfile {
+  background-color: #FFFF99;
   box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
-  border: none;
 }
 
 .odd {
-  background-color: #CBFAFA;
   -o-transform:rotate(-2deg);
   -webkit-transform:rotate(-2deg);
   -moz-transform:rotate(-2deg);
 }
 
 .even {
-  background-color: #FFFF99;
   -o-transform:rotate(2deg);
   -webkit-transform:rotate(2deg);
   -moz-transform:rotate(2deg);
