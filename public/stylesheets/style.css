@@ -18,7 +18,7 @@
    height: 40px;
    width: 100%;
    border-top: 1px solid white;
-   margin-top: 150px;
+   margin-top: 250px;
    position: absolute;
  }
 
@@ -360,8 +360,8 @@ form p {
   width: 50%;
   margin-left: 25%;
   margin-top: 10px;
-  margin-bottom: 30px;
-  padding-bottom: 30px;
+  margin-bottom: 100px;
+  padding-bottom: 150px;
   box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
 }
 

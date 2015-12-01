@@ -3,15 +3,15 @@
   <% if (classes.length == 0) { %>
     <h2 id="welcomeHeader"> Welcome <%= currentUser.firstName%> </h2>
     <br>
-    <h2><a class="modal-trigger" href="#modal1">Let's add your schedule!</a></h2>
+    <h2><a style="text-decoration: underline" class="modal-trigger" href="#modal1">Let's add your schedule!</a></h2>
   <% } else { %>
       <ul>
     <% for (var i=0; i<classes.length; i++) { %>
       <li><a href="/classes/<%= classes[i]._id %>"><%= classes[i].subject %> Period <%= classes[i].period %></a></li>
       <br>
       <% } %>
+      <li id="modalId"><a class="modal-trigger" href="#modal1">Add a Class</a></li>
   <% } %>
-    <li id="modalId"><a class="modal-trigger" href="#modal1">Add a Class</a></li>
     </ul>
   <br><br>
 </div>
