@@ -39,3 +39,7 @@ $("#linkToGroup").click(function () {
 })
 
 $("#picture-dropzone").dropzone({ url: "/classes/:id" });
+
+// $('#pushpin').bind('mouseenter', function(){
+//      $(this).effect("bounce", { times:3 }, 1000);
+// });

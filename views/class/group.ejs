@@ -1,10 +1,10 @@
-<div id="groupView">
 <a id="back" href="/classes/<%= specificClass._id %>">Back</a>
-<img id="pushpin" src="/images/push-pin.jpg"/>
-<a class="button" href="/classes/<%= specificClass._id %>">Publish to Class</a>
+
+<a id="back" style="margin-left: 40%" href="/classes/<%= specificClass._id %>">Publish to Class</a>
   <% for (var i=0; i<groups.length; i=i+2) { %>
       <div class="groupDiv" style="top: 10px;" id="box"+i>
-        <h6 style="margin-left:10px">Group <%= i + 1 %></h6>
+        <img id="pushpin" src="/images/blue-push-pin.png"/>
+        <h5 style="margin-left:10px">Group <%= i + 1 %></h5>
         <% for (var j=0; j<groups[i].length; j++) { %>
           <div id="draggable" class="ui-draggable studentDiv">
             <p><%= groups[i][j] %></p>
@@ -13,7 +13,8 @@
       </div>
     <% if (i + 1) { %>
       <div style="top: 400px;" class="groupDiv" id="box"+i>
-      <h6 style="margin-left:10px">Group <%= i+2 %></h6>
+      <img id="pushpin" src="/images/blue-push-pin.png"/>
+      <h5 style="margin-left:10px">Group <%= i+2 %></h5>
         <% for (var j=0; j<groups[i+1].length; j++) { %>
           <div id="draggable" class="ui-draggable studentDiv">
             <p><%= groups[i+1][j] %></p>
@@ -22,4 +23,3 @@
       </div>
     <% } %>
   <% } %>
-</div>

@@ -1,7 +1,8 @@
 <a id="back" href="/">Back</a>
 <div id="classDisplay">
   <img id="pushpin" src="/images/push-pin.jpg"/>
-  <h3><%= specificClass.subject %> Period <%= specificClass.period %><small><i>   (<%= specificClass.numStudents %> students)</i></small></h3>
+  <h3><%= specificClass.subject %> Period <%= specificClass.period %></h3>
+    <p>(<%= specificClass.numStudents %> students)</p>
 
   <a id="linkToGroup" href="#">Split into Groups</a>
   <a id="linkToEdit" class="modal-trigger" href="#modal2">Add a Student</a>
@@ -14,7 +15,7 @@
 
     <% if (specificClass.numStudents >0) { %>
       <form id="groupForm" class="hidden" action="/classes/<%= specificClass._id %>/group" method="post">
-        <div class="input-field">
+        <div class="input-field"><br>
           <select id="groupBy" name="group[perGroup]">
             <option value="2">2</option>
             <option value="3">3</option>
